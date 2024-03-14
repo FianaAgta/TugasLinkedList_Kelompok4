@@ -1,1 +1,29 @@
-
+#Menambahkan Class Node Beserta Fungsinya
+class Node:
+    def __init__(self, pilihan_menu, harga):
+        self.pilihan_menu = pilihan_menu
+        self.harga = harga
+        self.next = None
+#Menambahkan Class LinkedList Beserta Fungsinya
+class LinkedList:
+    def __init__(self):
+        self.head = None
+        self.tail = None
+        self.length = 0
+#Menambahkan Fungsi Untuk Menampilkan Pesanan
+    def display_order (self):
+        temp = self.head
+        while temp:
+            print(f"{temp.pilihan_menu}: Rp {temp.harga}")
+            temp = temp.next
+#Menambahkan Fungsi Agar Bisa Menambahkan Pesanan
+    def add_order (self, pilihan_menu, harga):
+        node_baru = Node(pilihan_menu, harga)
+        if self.length == 0:
+            self.head = node_baru
+            self.tail = node_baru
+        else:
+            self.tail.next = node_baru
+            self.tail = node_baru
+        self.length += 1  
+#Menambahkan Fungsi Untuk Menjumlah Harga
