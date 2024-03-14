@@ -56,3 +56,32 @@ def main():
                 3. Jumlah Harga yang dibayarkan
                 4. Keluar dan Print Struk''')
         pilihan = input("Input kode menu untuk mengakses menu (1/2/3/4): ")
+#Menambahkan Kondisi Pilihan '1' Untuk Meng-input Menu Pesanan
+        if pilihan == '1':
+            kode_pesanan = input("Input kode menu pesanan yang ingin anda pesan (1/2/3/4/5): ")
+            jumlah_pesanan = int(input("Input jumlah pesanan: "))
+            temp = menu.head
+            while temp:
+                if temp.pilihan_menu.lower().startswith(kode_pesanan.lower()):
+                    for _ in range(jumlah_pesanan):
+                        keranjang.add_order(temp.pilihan_menu, temp.harga)
+                    print(f"Pesanan telah ditambahkan ke keranjang.")
+                    break
+                temp = temp.next
+            else:
+                print("Pilihan kode menu anda tidak valid. Silahkan pilih kode menu yang ada di display.")
+#Menambahkan Kondisi Pilihan '2' Untuk Menampilkan Pesanan
+        elif pilihan == '2':
+            print("\nPesanan Anda:")
+            keranjang.display_order()
+#Menambahkan Kondisi Pilihan '3' Untuk Menampilkan Total Harga Pesanan
+        elif pilihan == '3':
+            print("Total Harga yang harus dibayarkan adalah : Rp", keranjang.total_harga())
+#Menambahkan Kondisi Pilihan '4' Untuk Menampilkan Ucapan Terimakasih Dan Mengakhiri Sesi
+        elif pilihan == '4':
+            print("Terima kasih sudah memesan dan telah menggunakan layanan kami.")
+            print("--Struk sedang di print--")
+            break
+        else:
+            print("Menu tidak valid. Silahkan pilih menu yang ada di display.")
+main()
